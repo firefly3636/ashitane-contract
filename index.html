@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あした音 契約書類生成</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Yu Gothic UI', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 48px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .logo { text-align: center; margin-bottom: 8px; }
+        .logo h1 { font-size: 28px; color: #333; letter-spacing: 2px; }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 36px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-group { margin-bottom: 24px; }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
+        label .required {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-left: 4px;
+        }
+
+        label .optional {
+            color: #aaa;
+            font-size: 12px;
+            margin-left: 4px;
+            font-weight: 400;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            font-family: inherit;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+        }
+
+        input::placeholder { color: #bbb; }
+
+        .postal-row {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+        }
+
+        .postal-row .postal-input {
+            flex: 0 0 160px;
+        }
+
+        .postal-row .postal-btn {
+            flex: 0 0 auto;
+            padding: 0 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .postal-row .postal-btn:hover { opacity: 0.85; }
+        .postal-row .postal-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .address-input { margin-top: 10px; }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            font-family: inherit;
+        }
+
+        .btn:hover { opacity: 0.92; }
+        .btn:active { transform: scale(0.98); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .info {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border: 1px solid #e8ecff;
+        }
+
+        .info h3 {
+            font-size: 13px;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .info ul { list-style: none; padding: 0; }
+
+        .info ul li {
+            font-size: 13px;
+            color: #666;
+            padding: 3px 0 3px 18px;
+            position: relative;
+        }
+
+        .info ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            background: #1e293b;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            animation: slideUp 0.3s ease;
+            display: none;
+        }
+
+        .toast.error { background: #dc2626; }
+        .toast.success { background: #16a34a; }
+
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(1rem); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 500px) {
+            .container { padding: 28px 20px; }
+            .postal-row { flex-direction: column; }
+            .postal-row .postal-input { flex: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>あした音</h1>
+        </div>
+        <p class="subtitle">契約書類 自動生成システム</p>
+
+        <form id="genForm">
+            <div class="form-group">
+                <label>利用者氏名<span class="required">必須</span></label>
+                <input type="text" id="nameInput" name="name" placeholder="例：山田 太郎" required>
+            </div>
+
+            <div class="form-group">
+                <label>住所<span class="required">必須</span></label>
+                <div class="postal-row">
+                    <input type="text" id="postalInput" name="postal" class="postal-input"
+                           placeholder="例：277-0071" maxlength="8">
+                    <button type="button" class="postal-btn" id="postalBtn" onclick="lookupAddress()">
+                        住所検索
+                    </button>
+                </div>
+                <div class="address-input">
+                    <input type="text" id="addressInput" name="address"
+                           placeholder="郵便番号を入力して「住所検索」→ 番地を追記" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>管理番号<span class="optional">任意</span></label>
+                <input type="number" id="numberInput" name="number" placeholder="例：12597">
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">
+                <span id="btnText">書類を生成してダウンロード</span>
+                <div class="spinner" id="spinner"></div>
+            </button>
+        </form>
+
+        <div class="info">
+            <h3>生成される書類（ZIP形式でダウンロード）</h3>
+            <ul>
+                <li>契約書・重要事項説明書 表紙（Excel）</li>
+                <li>契約書（Word）</li>
+                <li>重要事項説明書（Word）</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
