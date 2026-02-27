@@ -4,3 +4,5 @@ __pycache__/
 .venv/
 venv/
 *.log
+debug_*.txt
+node_modules/

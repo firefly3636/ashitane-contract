@@ -1,33 +1,20 @@
-# Cloudflare Pages 接続（最小3ステップ）
+# Cloudflare Pages デプロイ手順（静的サイト）
 
-GitHub への push は完了しています。あとは次の **3ステップだけ** です。
+## ダッシュボード設定
 
----
+1. **フレームワークプリセット**: `None`
+2. **ビルドコマンド**: **空のまま**（何も入力しない）
+3. **ビルド出力ディレクトリ**: `/` または `.`
+4. **ルートディレクトリ**: 空のまま
 
-## ステップ1: Cloudflare を開く
+## 重要
 
-ブラウザで **https://dash.cloudflare.com** を開き、ログインする。
+- `wrangler.toml` は**使用しない**（Worker として誤認識されるため削除済み）
+- 静的 HTML/JS のみのため、ビルドは不要
+- リポジトリ直下の `index.html`・`app.js`・`templates/` がそのまま公開される
 
----
+## デプロイが失敗する場合
 
-## ステップ2: Pages を作成
-
-1. 左メニュー **「Workers & Pages」** をクリック
-2. **「Create」** ボタン → **「Pages」** を選択
-3. **「Connect to Git」** をクリック
-4. **「GitHub」** を選択 → 認証（初回のみ）
-5. リポジトリ一覧から **「ashitane-contract」** を選択
-6. **「Begin setup」** をクリック
-
----
-
-## ステップ3: デプロイ設定
-
-1. **Build command**: 空欄のまま（何も入力しない）
-2. **Build output directory**: `/` と入力
-3. **「Save and Deploy」** をクリック
-
----
-
-**完了**  
-数十秒後、URL（例: https://ashitane-contract.pages.dev）が表示されます。そのURLでアプリが使えます。
+1. 上記の設定を再確認
+2. ビルドコマンドが空であることを確認（`npm run build` などが入っていないこと）
+3. 「リトライビルド」を実行
