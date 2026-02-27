@@ -1,0 +1,38 @@
+=== Files in docx ===
+[Content_Types].xml
+_rels/.rels
+word/document.xml
+word/_rels/document.xml.rels
+word/footnotes.xml
+word/endnotes.xml
+word/footer1.xml
+word/theme/theme1.xml
+word/settings.xml
+customXml/item1.xml
+customXml/itemProps1.xml
+customXml/item2.xml
+customXml/itemProps2.xml
+word/styles.xml
+word/webSettings.xml
+word/fontTable.xml
+docProps/core.xml
+docProps/app.xml
+docProps/custom.xml
+customXml/_rels/item1.xml.rels
+customXml/_rels/item2.xml.rels
+
+=== document.xml search ===
+
+=== Found '萩原' at index 4713 ===
+i="HG丸ｺﾞｼｯｸM-PRO"/><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="HG丸ｺﾞｼｯｸM-PRO" w:eastAsia="HG丸ｺﾞｼｯｸM-PRO" w:hAnsi="HG丸ｺﾞｼｯｸM-PRO" w:hint="eastAsia"/><w:sz w:val="24"/></w:rPr><w:t>萩原 ヨシ</w:t></w:r><w:r w:rsidR="00905D6E"><w:rPr><w:rFonts w:ascii="HG丸ｺﾞｼｯｸM-PRO" w:eastAsia="HG丸ｺﾞｼｯｸM-PRO" w:hAnsi="HG丸ｺﾞｼｯｸM-PRO" w:hint="eastAsia"/><w:sz w:val="24"/></w:rPr><w:t>子</w:t></w:r><w:r w
+
+=== Found 'ヨシ子' at index 64118 ===
+dR="00F46726" w:rsidRPr="00F46726"><w:rPr><w:rFonts w:ascii="HG丸ｺﾞｼｯｸM-PRO" w:eastAsia="HG丸ｺﾞｼｯｸM-PRO" w:hAnsi="HG丸ｺﾞｼｯｸM-PRO" w:hint="eastAsia"/><w:sz w:val="28"/><w:szCs w:val="28"/></w:rPr><w:t>萩原 ヨシ子</w:t></w:r><w:r w:rsidR="00B705BE" w:rsidRPr="00B705BE"><w:rPr><w:rFonts w:ascii="HG丸ｺﾞｼｯｸM-PRO" w:eastAsia="HG丸ｺﾞｼｯｸM-PRO" w:hAnsi="HG丸ｺﾞｼｯｸM-PRO" w:hint="eastAsia"/><w:sz w:val="28"/><w:szCs w:val=
+
+=== '277-0071' NOT FOUND in document.xml ===
+
+=== Found '千葉県柏市豊住' at index 61671 ===
+id="11"/><w:r w:rsidR="00F46726"><w:rPr><w:rFonts w:ascii="HG丸ｺﾞｼｯｸM-PRO" w:eastAsia="HG丸ｺﾞｼｯｸM-PRO" w:hAnsi="HG丸ｺﾞｼｯｸM-PRO" w:hint="eastAsia"/><w:sz w:val="28"/><w:szCs w:val="28"/></w:rPr><w:t>0071　千葉県柏市豊住3丁目16-4</w:t></w:r></w:p><w:bookmarkEnd w:id="12"/><w:bookmarkEnd w:id="13"/><w:bookmarkEnd w:id="14"/><w:bookmarkEnd w:id="15"/><w:bookmarkEnd w:id="16"/><w:p w14:paraId="1F29C902" w14:textId="777777
+
+=== Found '豊住3丁目' at index 61676 ===
+1"/><w:r w:rsidR="00F46726"><w:rPr><w:rFonts w:ascii="HG丸ｺﾞｼｯｸM-PRO" w:eastAsia="HG丸ｺﾞｼｯｸM-PRO" w:hAnsi="HG丸ｺﾞｼｯｸM-PRO" w:hint="eastAsia"/><w:sz w:val="28"/><w:szCs w:val="28"/></w:rPr><w:t>0071　千葉県柏市豊住3丁目16-4</w:t></w:r></w:p><w:bookmarkEnd w:id="12"/><w:bookmarkEnd w:id="13"/><w:bookmarkEnd w:id="14"/><w:bookmarkEnd w:id="15"/><w:bookmarkEnd w:id="16"/><w:p w14:paraId="1F29C902" w14:textId="77777777"
